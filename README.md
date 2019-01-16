@@ -19,7 +19,7 @@ mongoexport --db dbname --collection clname --type=json --fieldFile fields.txt -
 bsondump --outFile abc.json abc.bson
 mongoimport -d dbname -c clname abc.json
 
-## Miniconda
+#### Miniconda
 conda install -y pip numpy scipy pandas scikit-learn matplotlib seaborn plotly nltk Pillow jupyter
 conda install -y tensorflow keras
 
