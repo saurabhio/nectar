@@ -3,7 +3,7 @@ Some useful commands, codes, etc.
 
 
 ### MongoDB
-```
+```javascript
 mongodump /h abc.def.mongolab.com /port 46719  /u username /p password123  /d dbname /o e:\MongodbBackup
 mongodump -d dbname -o e:\MongodbBackup
 
@@ -18,7 +18,7 @@ mongoimport -d dbname -c clname abc.json
 ```
 
 ### Miniconda
-```python
+```bash
 conda install -y pip numpy scipy pandas scikit-learn matplotlib seaborn plotly nltk Pillow jupyter
 conda install -y tensorflow keras
 ```
