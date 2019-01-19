@@ -89,5 +89,38 @@ sudo iptables -L  (NAT: shares a single external IP among multiple hosts)
 
 ```
 
+### AWS 
 
+After sshing into ec2 instance:
+```
+sudo yum update -y
+sudo yum install -y docker
+
+sudo service docker start
+sudo usermod -aG docker ec2-user
+```
+Log out and log back in again to pick up the new docker group permissions. 
+
+### REST APIs
+```
+curl http://localhost:5000/todos/todo3 -d "task=something different" -X PUT -v
+```
+With Python using Requests:
+```
+requests.put('http://localhost:5000/todos/todo1', data={'task': 'Remember the milk'}).json()
+```
+Terminal: ```$ curl http://localhost:5000/todos/todo1 -X DELETE -v```
+Python: ```requests.delete('http://localhost:5000/todos/todo4')```
+
+
+Terminal: ```$ curl http://localhost:5000/todos/todo1 -d "task=Remember the milk" -X PUT -v```
+Python: ```requests.put('http://localhost:5000/todos/todo1', data={'task': 'Remember the milk'}).json()```
+
+Terminal: ```$ curl http://localhost:5000/todos -d "task=Remember the milk" -X POST -v```
+Python: ```requests.post('http://localhost:5000/todos', data={'task': 'Remember the milk'}).json()```
+
+### Sitemap
+```
+https://www.google.com/ping?sitemap=https://www.example.com/sitemap.xml
+```
 
