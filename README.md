@@ -61,3 +61,25 @@ python -m http.server 2020
 wget -pcmkEe robots=off 192.168.1.2:2020
 ```
 
+### Linux
+```
+sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove
+
+sudo apt-get install python3 python3-pip python3-dev python-virtualenv 
+sudo pip3 install numpy scipy matplotlib pandas scikit-learn tensorflow keras -U
+
+
+curl -O https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz
+sha256sum go1.6.linux-amd64.tar.gz
+
+
+echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
+source ~/.profile
+
+
+sudo iptables -L
+```
+NAT: shares a single external IP among multiple hosts
+
+
+
