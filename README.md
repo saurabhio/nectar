@@ -163,12 +163,12 @@ Server: Werkzeug/0.14.1 Python/3.6.3
 
 Two important commands:
 
--ssh into an instance
+- SSH into an instance
 ```
 ssh -v -i <path to pem file> ubuntu@<Public IP>
 ```
 
--copy file from local computer to instance
+- Copy file from local computer to instance
 ```
 scp -i <path to pem file> -r <path to local file (sh)> ubuntu@<Public IP>:<path to destination on aws instance>
 ```
@@ -185,13 +185,13 @@ e.g. ssh -p 22000 saurabh@192.168.3.117
 
 Workflow:
 
--SSH into your aws instance.
--Create a new tmux session called work using the command tmux new -s work.
--Do everything as you would previously.
--Detach from the session by pressing ctrl-b followed by d.
+- SSH into your aws instance.
+- Create a new tmux session called work using the command tmux new -s work.
+- Do everything as you would previously.
+- Detach from the session by pressing ctrl-b followed by d.
 
--Once you’ve detached yourself from the session, you can work on anything else, even go to sleep.
--Subsequently, if you need to reattach to that particular tmux session to check your progress, run ```tmux a -t work```
+- Once you’ve detached yourself from the session, you can work on anything else, even go to sleep.
+- Subsequently, if you need to reattach to that particular tmux session to check your progress, run ```tmux a -t work```
 
 
 ### Sitemap
