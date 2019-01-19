@@ -127,6 +127,34 @@ $ curl http://localhost:5000/todos -d "task=Remember the milk" -X POST -v
 requests.post('http://localhost:5000/todos', data={'task': 'Remember the milk'}).json()
 ```
 
+### API Example
+
+Some examples of how users can access your API so that they can get predictions
+```
+url = 'http://127.0.0.1:5000/'
+params ={'query': 'that movie was boring'}
+response = requests.get(url, params)
+response.json()
+```
+{'confidence': 0.128, 'prediction': 'Negative'}
+
+```$ curl -X GET http://127.0.0.1:5000/ -d query='that movie was boring'```
+{
+    "prediction": "Negative",
+    "confidence": 0.128
+}
+
+```$ http http://127.0.0.1:5000/ query=='that movie was boring'```
+HTTP/1.0 200 OK
+Content-Length: 58
+Content-Type: application/json
+Date: Fri, 31 Aug 2018 18:49:25 GMT
+Server: Werkzeug/0.14.1 Python/3.6.3
+{
+    "confidence": 0.128,
+    "prediction": "Negative"
+}
+
 ### Sitemap
 ```
 https://www.google.com/ping?sitemap=https://www.example.com/sitemap.xml
