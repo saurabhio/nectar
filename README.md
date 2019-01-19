@@ -102,22 +102,30 @@ sudo usermod -aG docker ec2-user
 Log out and log back in again to pick up the new docker group permissions. 
 
 ### REST APIs
-```
-curl http://localhost:5000/todos/todo3 -d "task=something different" -X PUT -v
-```
-With Python using Requests:
-```
-requests.put('http://localhost:5000/todos/todo1', data={'task': 'Remember the milk'}).json()
-```
-Terminal: ```$ curl http://localhost:5000/todos/todo1 -X DELETE -v```
-Python: ```requests.delete('http://localhost:5000/todos/todo4')```
 
+PUT:
+```
+$ curl http://localhost:5000/todos/todo3 -d "task=something different" -X PUT -v
+requests.put('http://localhost:5000/todos/todo3', data={'task': 'Remember the milk'}).json()
+```
 
-Terminal: ```$ curl http://localhost:5000/todos/todo1 -d "task=Remember the milk" -X PUT -v```
-Python: ```requests.put('http://localhost:5000/todos/todo1', data={'task': 'Remember the milk'}).json()```
+DELETE:
+```
+$ curl http://localhost:5000/todos/todo1 -X DELETE -v
+requests.delete('http://localhost:5000/todos/todo1')
+```
 
-Terminal: ```$ curl http://localhost:5000/todos -d "task=Remember the milk" -X POST -v```
-Python: ```requests.post('http://localhost:5000/todos', data={'task': 'Remember the milk'}).json()```
+UPDATE: 
+```
+$ curl http://localhost:5000/todos/todo3 -d "task=Remember the water" -X PUT -v
+requests.put('http://localhost:5000/todos/todo3', data={'task': 'Remember the water'}).json()
+```
+
+POST:
+```
+$ curl http://localhost:5000/todos -d "task=Remember the milk" -X POST -v
+requests.post('http://localhost:5000/todos', data={'task': 'Remember the milk'}).json()
+```
 
 ### Sitemap
 ```
