@@ -20,13 +20,9 @@ logpath=D:\MongoDB\data\log\mongo.log
 ```
 4. Start MongoDB service:  ```net start MongoDB```  (listens on port 27017)
 5. Install MongoDB: ```mongod --config "D:\MongoDB\mongod.cfg" --install```
-
 6. Now, to run MongoDB client: ```mongo```
-
 7. To stop MongoDB service:  ```net stop MongoDB``` 
-
 8. To remove MongoDB service: ```mongod --remove```
-
 
 ### MongoDB Import & Export
 ```
@@ -48,8 +44,8 @@ mongoimport -d dbname -c clname abc.json
 ```
 netsh wlan set hostednetwork mode=allow ssid=anyname key=12345678
 netsh wlan start hostednetwork
-netsh wlan stop hostednetwork
 
+netsh wlan stop hostednetwork
 netsh wlan show hostednetwork
 ```
 
@@ -58,8 +54,6 @@ netsh wlan show hostednetwork
 conda install -y pip numpy scipy pandas scikit-learn matplotlib seaborn plotly nltk Pillow jupyter
 conda install -y tensorflow keras
 ```
-
-
 
 
 
