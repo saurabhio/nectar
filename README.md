@@ -71,15 +71,23 @@ sudo pip3 install numpy scipy matplotlib pandas scikit-learn tensorflow keras -U
 
 curl -O https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz
 sha256sum go1.6.linux-amd64.tar.gz
-
-
 echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
 source ~/.profile
 
 
-sudo iptables -L
+scp -i key_file.pem your_username@remotehost.edu:/remote/dir/foobar.txt /local/dir
+scp foobar.txt your_username@remotehost.edu:/some/remote/directory
+
+cp your_username@rh1.edu:/some/remote/directory/foobar.txt \
+your_username@rh2.edu:/some/remote/directory/
+
+
+curl -I http://domain.com
+
+
+sudo iptables -L  (NAT: shares a single external IP among multiple hosts)
+
 ```
-NAT: shares a single external IP among multiple hosts
 
 
 
