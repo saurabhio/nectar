@@ -4,7 +4,6 @@ Some useful commands, codes, etc.
 
 ### MongoDB Installation
 1. Download & Install MongoDB Community Edition
-
 2. Make following folder structure in any drive, say D:,
 ```
 -MongoDB
@@ -14,15 +13,12 @@ Some useful commands, codes, etc.
 			-mongo.log
 	-mongod.cfg
 ```
-
 3. In monod.cfg file write this:
 ```
 dbpath=D:\MongoDB\data\db
 logpath=D:\MongoDB\data\log\mongo.log
 ```
-
 4. Start MongoDB service:  ```net start MongoDB```  (listens on port 27017)
-
 5. Install MongoDB: ```mongod --config "D:\MongoDB\mongod.cfg" --install```
 
 6. Now, to run MongoDB client: ```mongo```
@@ -45,6 +41,16 @@ mongoexport --db dbname --collection clname --type=json --fieldFile fields.txt -
 
 bsondump --outFile abc.json abc.bson
 mongoimport -d dbname -c clname abc.json
+```
+
+### WLAN
+
+```
+netsh wlan set hostednetwork mode=allow ssid=anyname key=12345678
+netsh wlan start hostednetwork
+netsh wlan stop hostednetwork
+
+netsh wlan show hostednetwork
 ```
 
 ### Miniconda
