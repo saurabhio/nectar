@@ -40,7 +40,6 @@ mongoimport -d dbname -c clname abc.json
 ```
 
 ### WLAN
-
 ```
 netsh wlan set hostednetwork mode=allow ssid=anyname key=12345678
 netsh wlan start hostednetwork
@@ -55,5 +54,10 @@ conda install -y pip numpy scipy pandas scikit-learn matplotlib seaborn plotly n
 conda install -y tensorflow keras
 ```
 
+### File sharing
+```
+python -m http.server 2020
 
+wget -pcmkEe robots=off 192.168.1.2:2020
+```
 
