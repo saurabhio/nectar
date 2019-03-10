@@ -89,6 +89,17 @@ sudo iptables -L  (NAT: shares a single external IP among multiple hosts)
 
 ```
 
+### Linux Program Installation
+```
+tar -xjvf archive-name.tar.bz2    //or
+tar -xzf archive-name.tar.gz
+
+cd archive-name
+./configure
+make
+sudo make install
+```
+
 ### AWS 
 
 After sshing into ec2 instance:
