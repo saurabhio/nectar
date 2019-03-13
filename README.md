@@ -206,5 +206,6 @@ Server: Werkzeug/0.14.1 Python/3.6.3
 ### Sitemap
 ```
 https://www.google.com/ping?sitemap=https://www.example.com/sitemap.xml
+https://www.bing.com/ping?sitemap=https://www.example.com/sitemap.xml
 ```
 
