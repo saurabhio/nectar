@@ -51,8 +51,7 @@ netsh wlan show hostednetwork
 ### Miniconda
 ```
 conda update conda
-conda install -y -c conda-forge pip numpy scipy pandas scikit-learn matplotlib seaborn plotly dash dash-daq nltk tensorflow keras jupyterhub jupyterlab
-conda update --all
+conda install -c conda-forge pip numpy scipy pandas scikit-learn matplotlib seaborn plotly dash dash-daq nltk tensorflow keras jupyterhub jupyterlab
 conda clean --all
 ```
 
