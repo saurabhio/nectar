@@ -50,8 +50,10 @@ netsh wlan show hostednetwork
 
 ### Miniconda
 ```
-conda install -y pip numpy scipy pandas scikit-learn matplotlib seaborn plotly nltk Pillow jupyter
-conda install -y tensorflow keras
+conda update conda
+conda install -y -c conda-forge pip numpy scipy pandas scikit-learn matplotlib seaborn plotly dash dash-daq nltk tensorflow keras jupyterhub jupyterlab
+conda update --all
+conda clean --all
 ```
 
 ### File sharing
