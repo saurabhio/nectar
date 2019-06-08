@@ -202,6 +202,13 @@ Server: Werkzeug/0.14.1 Python/3.6.3
   "prediction": "Negative"
  }
 
+### Email Authenticity
+
+Open Original Message of email,
+In **Received field**, check domain name and IP address 
+In **Received-SPF** field, check pass
+In **Authentication-Results** field, check spf=pass and dkim=pass
+
 ### Sitemap
 ```
 https://www.google.com/ping?sitemap=https://www.example.com/sitemap.xml
