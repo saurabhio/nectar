@@ -48,11 +48,6 @@ netsh wlan stop hostednetwork
 netsh wlan show hostednetwork
 ```
 
-### Miniconda
-```
-conda install -c conda-forge pip numpy scipy pandas scikit-learn matplotlib seaborn plotly dash dash-daq nltk tensorflow keras jupyterhub jupyterlab
-```
-
 ### File sharing
 ```
 python -m http.server 2020
@@ -64,8 +59,17 @@ wget -pcmkEe robots=off 192.168.1.2:2020
 ```
 sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove
 
-sudo apt-get install python3 python3-pip python3-dev python-virtualenv 
-sudo pip3 install numpy scipy matplotlib pandas scikit-learn tensorflow keras -U
+
+sudo apt-get install python3-pip 
+pip3 install virtualenv
+
+python3 -m virtualenv ~/env_test  # to create virtual environment, (by default it has setuptools, pip, and wheel)
+source ~/env_test/bin/activate    # to use 'env_test' environment
+deactivate			  # to exit any environment
+In the environment, pip and pip3, python and python3 can be used interchangeably.
+
+pip freeze > requirements.txt
+pip install -r requirements.txt
 
 
 curl -O https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz
@@ -86,6 +90,12 @@ curl -I http://domain.com
 
 sudo iptables -L  (NAT: shares a single external IP among multiple hosts)
 
+
+export PATH=$PATH:~/bin
+
+
+sudo apt-get purge docker-ce
+sudo rm -rf /var/lib/docker
 ```
 
 ### Linux Program Installation
