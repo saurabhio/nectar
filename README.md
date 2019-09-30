@@ -135,12 +135,12 @@ scp -i <path to pem file> -r <path to local file (sh)> ubuntu@<Public IP>:<path 
 
 ```
 chmod 600 ~/Downloads/aws-dl.pem
-ssh -v -i ~/Downloads/aws-dl.pem ubuntu@52.42.90.161
-scp -i ~/Downloads/aws-dL.pem -r ~/Desktop/install.sh ubuntu@52.42.90.161:~/.
+ssh -v -i ~/Downloads/aws-dl.pem ubuntu@12.34.56.78
+scp -i ~/Downloads/aws-dL.pem -r ~/Desktop/install.sh ubuntu@12.34.56.78:~/.
 
 chmod +x install.sh
 
-e.g. ssh -p 22000 saurabh@192.168.3.117
+e.g. ssh -p 22000 saurabh@192.168.1.3
 ```
 
 Workflow:
