@@ -154,32 +154,6 @@ Workflow:
 - Subsequently, if you need to reattach to that particular tmux session to check your progress, run ```tmux a -t work```
 
 
-### REST APIs
-
-PUT:
-```
-$ curl http://localhost:5000/todos/todo3 -d "task=something different" -X PUT -v
-requests.put('http://localhost:5000/todos/todo3', data={'task': 'Remember the milk'}).json()
-```
-
-DELETE:
-```
-$ curl http://localhost:5000/todos/todo1 -X DELETE -v
-requests.delete('http://localhost:5000/todos/todo1')
-```
-
-UPDATE: 
-```
-$ curl http://localhost:5000/todos/todo3 -d "task=Remember the water" -X PUT -v
-requests.put('http://localhost:5000/todos/todo3', data={'task': 'Remember the water'}).json()
-```
-
-POST:
-```
-$ curl http://localhost:5000/todos -d "task=Remember the milk" -X POST -v
-requests.post('http://localhost:5000/todos', data={'task': 'Remember the milk'}).json()
-```
-
 ### API Example
 
 Some examples of how users can access your API so that they can get predictions
