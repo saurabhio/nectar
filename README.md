@@ -163,7 +163,10 @@ params ={'query': 'that movie was boring'}
 response = requests.get(url, params)
 response.json()
 ```
-{'confidence': 0.128, 'prediction': 'Negative'}
+{
+    "prediction": "Negative",
+    "confidence": 0.128
+}
 
 ```
 $ curl -X GET http://127.0.0.1:5000/ -d query='that movie was boring'
@@ -182,9 +185,9 @@ Content-Type: application/json
 Date: Fri, 31 Aug 2018 18:49:25 GMT 
 Server: Werkzeug/0.14.1 Python/3.6.3 
 {
-  "confidence": 0.128,
-  "prediction": "Negative"
- }
+    "prediction": "Negative",
+    "confidence": 0.128
+}
 
 ### Email Authenticity
 
