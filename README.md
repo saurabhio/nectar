@@ -51,14 +51,11 @@ netsh wlan show hostednetwork
 ### Docker
 
 Containers provide OS level virtualization, whereas VMs provide hardware virtualization.
-
 Container shares the host system's kernel with other container.
-
 Container run as isolated process in user space.
 
 
 Docker is one of the provider of container service.
-
 Docker Image which is running is called container.
 
 
