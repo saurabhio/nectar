@@ -1,5 +1,5 @@
 # nectar
-Some useful commands, codes, etc.
+Some useful commands, scripts, etc.
 
 
 ### MongoDB Installation
@@ -51,10 +51,14 @@ netsh wlan show hostednetwork
 ### Docker
 
 Containers provide OS level virtualization, whereas VMs provide hardware virtualization.
+
 Container shares the host system's kernel with other container.
+
 Container run as isolated process in user space.
 
+
 Docker is one of the provider of container service.
+
 Docker Image which is running is called container.
 
 
@@ -81,7 +85,7 @@ Pull Docker Image from Docker Hub
 docker pull image_name:tag_name
 ```
 
-Export/Import Docker Image
+Export/Import Docker Image locally
 ```
 docker save image_name:tag_name | gzip > image_name_tag.tar.gz
 docker load < image_name_tag.tar.gz
@@ -107,6 +111,10 @@ docker container stop container_name
 docker container ls [--all]
 docker container rm container_name
 docker container rm $(docker container ls -a -q)
+```
+
+```
+docker inspect container_name --format '{{.NetworkSettings.IPAddress}}'
 ```
 
 ```
