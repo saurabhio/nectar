@@ -58,6 +58,11 @@ Container run as isolated process in user space.
 Docker is one of the provider of container service.
 Docker Image which is running is called container.
 
+```
+sudo groupadd docker
+sudo usermod -aG docker $USER
+# logout and login
+```
 
 ```
 docker --version
@@ -66,8 +71,7 @@ docker info
 
 Build Docker Image
 ```
-cd /path/to/Dockerfile/location
-docker build -t my_image_name:version_name .
+docker build -t my_image_name:version_name -f ./path/to/Dockerfile .
 ```
 
 Push Docker Image to Docker Hub
@@ -100,7 +104,7 @@ docker run [ --name my_container_name  ] image_name:tag
 ```
 
 ```
-Ctrl+P+Q    # for switching between host terminal and container terminal
+Ctrl+P+Q    # for switching from container terminal to host terminal
 docker attach container_name # in place of container_name, container_id can also be used
 docker container start container_name [-ia]
 docker container stop container_name
@@ -119,8 +123,11 @@ docker image ls
 docker image rm image_name
 docker image rm $(docker image ls -a -q)
 ```
-Delete all Docker related stuffs
+
+Other related stuffs
 ```
+docker stats [container_name]
+docker system df
 docker system prune -a
 ```
 
