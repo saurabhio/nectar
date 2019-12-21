@@ -1,4 +1,3 @@
-
 ### MongoDB Installation
 1. Download & Install MongoDB Community Edition
 2. Make following folder structure in any drive, say D:,
