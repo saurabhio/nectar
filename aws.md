@@ -1,4 +1,3 @@
-
 ### AWS 
 
 After sshing into ec2 instance:
