@@ -1,4 +1,4 @@
-### API Example
+### API 
 
 Some examples of how users can access your API so that they can get predictions
 ```
