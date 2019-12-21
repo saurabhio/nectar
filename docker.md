@@ -1,4 +1,3 @@
-
 ### Docker
 
 Containers provide OS level virtualization, whereas VMs provide hardware virtualization.
