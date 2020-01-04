@@ -1,4 +1,4 @@
-### Dev Practice
+### Practice
 
 1. For naming directories and files, use convention foo-bar
 
