@@ -1,2 +1,2 @@
 # nectar
-Some useful commands, scripts,snippets, etc.
+Some useful commands, scripts, snippets, etc.
