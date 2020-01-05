@@ -1,7 +1,5 @@
 ### Practice
 
-Note: Most of the following notes are taken from the various sources on the internet.
-
 - For naming directories and files, use convention foo-bar
 
    Avoid foo_bar, foo bar, Foo bar, ...
@@ -57,25 +55,6 @@ Note: Most of the following notes are taken from the various sources on the inte
  - All services, without exception, must be designed keeping in mind that exposing these to developers outside.
     
 
-- Rest API
-  ```
-  API is about what is going to be done, not about how
-  Naming of API must convey "what" and only do that. (no side-effects)
-  Specific error message should be returned
-  API is a developer UI, ensure UX is pleasant
-  Keep only two baseurls per resource
-  Keep verbs out of baseurls, (as HTTP verbs do that). Use noun for resources
-  GET /tickets
-  GET /tickets/123
-  Use plural url formats, e.g. tickets (not ticket)      
-  Always use SSL
-  Good documentation (should be publicly easily available)
-  Always version APIs
-  Create aliases for common queries
-  API should have ability to take json as input
-  Limit which fields are returned by API
-  RESTful APIs should be stateless. And the authentication should not depend on cookies or sessions.
-  ```
 - Functions
   ```
   Names should reveal intent
@@ -85,6 +64,11 @@ Note: Most of the following notes are taken from the various sources on the inte
   Functions should not use global variables, and not write to disk or console. This should be handled by some other special functions
   Avoid writing functions that take more than three (2^3 is 8 cases) input arguments
     ```
+   
+- Tip for writing tests: Test the interface, not the implementation. The ideal is you should be able to refactor your entire code base without changing any tests.
+
+
+- If your students are expected to code, do them a favor and teach them to use a debugger - you'll waste 15 mins of time for the students that already knew, and save days for those that didn't.
 
 - Continuous Integration
   ```
@@ -165,143 +149,4 @@ Note: Most of the following notes are taken from the various sources on the inte
   of the checks is the most important factor.
   ```
   
-  - Functional Programming 
-  ```
-  Functional programming is the process of building software by composing pure functions, avoiding shared state, 
-  mutable data, and side-effects.
-  
-  A pure function is a function which:
-  Given the same inputs, always returns the same output, and
-  Has no side-effects
-  
-  A side effect is any application state change that is observable outside the called function other than its return value.
-  Side effects include:
-    Modifying any external variable or object property (e.g., a global variable, or a variable in the parent function scope chain)
-    Logging to the console
-    Writing to the screen
-    Writing to a file
-    Writing to the network
-    Triggering any external process
-    Calling any other functions with side-effects
-
-  Pure functions have lots of properties that are important in functional programming, including referential transparency 
-  (you can replace a function call with its resulting value without changing the meaning of the program).
-
-  Function composition is the process of combining two or more functions in order to produce a new function or 
-  perform some computation. 
-  For example, the composition f . g is equivalent to f(g(x))
-
-  Higher order function is any function which takes a function as an argument, returns a function, or both.
-
-  A closure is the combination of a function bundled together (enclosed) with references to its surrounding state 
-  (the lexical environment). 
-  In other words, a closure gives you access to an outer function’s scope from an inner function. 
-  To use a closure, define a function inside another function and expose it. To expose a function, return it or pass it to 
-  another function.
-  The inner function will have access to the variables in the outer function scope, even after the outer function has returned.
-
-  A functor is something that can be mapped over. In other words, it’s a container which has an interface which can be 
-  used to apply a function to the values inside it. When you see the word functor, you should think “mappable”.
-  
-  A shared scope can include global scope or closure scopes. 
-  A list expressed over time is a stream.
-  ```
-  
-- SSH
-  ```
-  There are a number of SSH clients available both free and commercial, with OpenSSH being the most widely used client.  
-  The OpenSSH client program is called ssh and can be invoked from the terminal. The OpenSSH client package 
-  also provides other SSH utilities such as scp and sftp that are installed alongside the ssh command.
-  
-  sudo apt update
-  sudo apt install openssh-server openssh-client
-  
-  nc -vz 127.0.0.1 22
-  sudo /etc/init.d/ssh restart
-  or
-  sudo service ssh restart
-
-  Each host has a unique fingerprint that is stored in the ~/.ssh/known_hosts file.
-  
-  When the username is not given, the ssh command uses the current system login name.
-  
-  To connect on a non-default port, use the -p option to specify the port:
-
-  ssh -p 5522 username@hostname
-  
-  The OpenSSH client reads the options set in the per-user configuration file (~/.ssh/config). 
-  A sample SSH config is shown below:
-
-  Host dev
-    HostName dev.linuxize.com
-    User mike
-    Port 4422
-
-  now
-  ssh dev
-  means ssh -p 4422 mike@dev.linuxize.com
-
-  If you already don't have SSH key pair on your local machine you can generate one by typing:
-
-  ssh-keygen -t rsa -b 4096 -C "your_email@domain.com"
-
-  Once you have your key pair, copy the public key to the remote server:
-
-  ssh-copy-id username@hostname
-
-  Enter the remote user password, and the public key will be appended to the remote user authorized_keys file.
-
-  Once the key is uploaded, you can log in to the remote server without being prompted for a password.
-
-
-  SSH tunneling or SSH port forwarding is a method of creating an encrypted SSH connection between a client 
-  and a server machine through which services ports can be relayed.
-
-  There are three types of SSH port forwarding:
-    Local Port Forwarding
-    Remote Port Forwarding
-    Dynamic Port Forwarding
-
-  Local Port Forwarding
-  Local port forwarding allows you to forward a connection from the client host to the SSH server host and then to the destination host port. 
-  Local port forwarding allows you to forward a port on the local (ssh client) machine to a port on the remote (ssh server) machine, which is then forwarded to a port on the destination machine.
-  
-  In this type of forwarding the SSH client listens on a given port and tunnels any connection to that port to the specified port on the remote SSH server, which then connects to a port on the destination machine. The destination machine can be the remote SSH server or any other machine.
-
-
-  ssh -L [LOCAL_IP:]LOCAL_PORT:DESTINATION_HOST:DESTINATION_PORT -N -f [USER@]SSH_SERVER
-  The -f option tells the ssh command to run in the background and -N not to execute a remote command.
-  
-  Remote Port Forwarding
-
-  Remote port forwarding is the opposite of local port forwarding. It forwards a port from the server host to the client host and then to the destination host port. 
-  Remote port forwarding is the opposite of local port forwarding. It allows you to forward a port on the remote (ssh server) machine to a port on the local (ssh client) machine, which is then forwarded to a port on the destination machine. 
-  
-  In this type of forwarding the SSH server listens on a given port and tunnels any connection to that port to the specified port on the local SSH client, which then connects to a port on the destination machine. The destination machine can be the local or any other machine.
-
-  ssh -R [REMOTE:]REMOTE_PORT:DESTINATION:DESTINATION_PORT -N -f [USER@]SSH_SERVER
-
-  Dynamic Port Forwarding
-
-  Dynamic port forwarding creates a SOCKS proxy server that allows communication across a range of ports.
-  Dynamic port forwarding allows you to create a socket on the local (ssh client) machine which acts as a SOCKS proxy server. 
-  When a client connects to this port the connection is forwarded to the remote (ssh server) machine, which is then forwarded to a dynamic port on the destination machine.
-
-  This way, all the applications using the SOCKS proxy will connect to the SSH server and the server will forward all the traffic to its actual destination.
-
-  To create a dynamic port forwarding (SOCKS) pass the -D option to the ssh client:
-
-  ssh -R [LOCAL_IP:]LOCAL_PORT  -N -f username@hostname
-
-  scp local-file.txt remote_user@remote_server:/home/remote_user/xyz 
-
-  scp -rp /path/to/source/.  remote_user@remote_server:/path/to/dest/
-  
-  recommended way:
-  rsync -avzP /path/to/source/ remote_user@remote_server:/path/to/dest/
-
-  scp remote_user@remote_server:/home/remote_user/xyz.tar /home/local_user/Desktop
-
-  ```
-  
-- 
+ 
