@@ -53,3 +53,52 @@
   A list expressed over time is a stream.
   ```
   
+- OOP Limitations
+ ```
+ There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.
+
+    The key in making great and growable systems is much more to design how its modules communicate rather than what their internal properties and behaviors should be.
+
+    He literally said that the very term “object” was misleading and a more appropriate one would be “messaging.” Here is what I think.
+
+    there are two orthogonal means of interaction between objects: messaging and composition
+
+    Precious time and brainpower are being spent thinking about ‘abstractions’ and ‘design patterns’ instead of solving real-world problems
+
+    OOP to me means only messaging, local retention and protection and hiding of state-process, and extreme late-binding of all things.”
+    ~ Alan Kay
+
+    In other words, according to Alan Kay, the essential ingredients of OOP are:
+
+        Message passing
+        Encapsulation
+        Dynamic binding
+
+    Notably, inheritance and subclass polymorphism were NOT considered essential ingredients of OOP by Alan Kay,
+
+
+    the whole point of OOP is not to have to worry about what is inside an object. Objects made on different machines and with different languages should be able to talk to each other
+
+
+    Alan Kay’s big idea was to have independent programs (cells) communicate by sending messages to each other. The state of the independent programs would never be shared with the outside world (encapsulation).
+
+    That’s it. OOP was never intended to have things like inheritance, polymorphism, the “new” keyword, and the myriad of design patterns.
+
+
+    Erlang is OOP in its purest form. Unlike more mainstream languages, it focuses on the core idea of OOP — messaging. In Erlang, objects communicate by passing immutable messages between objects.
+
+
+
+
+
+    Lambda calculus and Turing machines are functionally equivalent — that anything that can be computed using a Turing machine can be computed using lambda calculus, and vice versa.
+
+
+
+    Lambda calculus represents a top-down, function application approach to computation, while the ticker tape/register machine formulation of the Turing machine represents a bottom-up, imperative (step-by-step) approach to computation
+
+    Both imperative programming and functional programming have their roots in the mathematics of computation theory, predating digital computers.
+
+  
+
+```
