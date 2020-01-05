@@ -23,7 +23,7 @@
   x2-x1+1  // x2-x1
   y2-y1+1  // y2-y1
   ```
-- 
+- Windows use CR+LF (\r\n) to indicate new lines, Unix based systems use just LF (\n)
 
 
 
