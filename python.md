@@ -46,8 +46,11 @@ print(mem_profile.memory_usage_resource())
 
 print(any_module.__file__) # prints module location
 
-print(f"{right:>10} | {left:<10} | {center:^10} | {12.34567":{width}.{precision}}")
+# To limit module exporting, use
+__all__ = ["function1", "function3"]
 
+
+print(f"{right:>10} | {left:<10} | {center:^10} | {12.34567":{width}.{precision}}")
 
 large_number = 10_000_000
 print(f'{large_number:,}')
@@ -196,6 +199,7 @@ home = os.environ.get('HOME')
  dict(sorted(d.items())) # sort by key
  sorted(d, key=d.get)    # sort by value
  
+
 
 
 ```
