@@ -44,6 +44,7 @@ funcs[0](2, 3)
 ```
 print(mem_profile.memory_usage_resource())
 
+print(any_module.__file__) # prints module location
 
 print(f"{right:>10} | {left:<10} | {center:^10} | {12.34567":{width}.{precision}}")
 
@@ -121,10 +122,8 @@ for p in ppl:
     if p < thresh:
         continue
      l.append(afunc(p))
-
 # better
 l = [afunc(p) for p in ppl if p >= thresh]
-
 # or
 l = list(map(afunc, filter(condition_func, ppl)))
 
@@ -133,11 +132,9 @@ l = list(map(afunc, filter(condition_func, ppl)))
 l = []
 for x in xcoord:
     for y in ycoord:
-        l.append((x,y))
-        
+        l.append((x,y))      
 # better
 l = [(x,y) for x in xcoord for y in ycoord]
-
 # or
 l = list(itertools.product(xcoord, ycoord))
 
@@ -146,13 +143,60 @@ d = {}
 for key, value in tall_buildings.items():
     if 'tower' not in key:
         continue
-     d[key] = afunc(value)
-     
+     d[key] = afunc(value)   
 # better
 d = {k:afunc(v) for k,v in tall_buildings.items() if 'tower' in k}
 
 
+prime = set() # not {}
+fibo = set()
+for i in num_list:
+    if is_prime(i):
+        prime.add(i)
+     if is_fibo(i):
+         fibo.add(i)
+s = prime & fibo
+ 
+# better
+prime = {i for i in num_list if is_prime(i)}
+fibo  = {i for i in num_list if is_fibo(i)}
+s = prime & fibo
+ 
+ 
+# generator expression (not generator function) is like list comprehension
+gen_erator = (i for i in itertools.count() if is_prime(i))
+
+with open("foo-bar.txt", "rb") as f: 
+    byte_data = f.read()
+     
+type(byte_data)  # bytes
+str = byte_data.decode("utf-8")
+byte_data_2 = str.encode("utf-8")
+ 
+with open("xyz.txt", "wb") as f:
+    f.write(byte_data_2)
+
+  
+[s for s in str if s in 'aeiou']
+ 
+ 
+# in ~/.bash_profile
+export DB_USER="my_db_user"
+export DB_PASS="my_db_pass"
+ 
+# in python file
+db_user     = os.environ.get('DB_USER')
+db_password = os.environ.get('DB_PASS')
+ 
+home = os.environ.get('HOME')
+ 
+ 
+ d = dict(zip(['name', 'phone'], ['foo', 1234567890]))
+ 
+ dict(sorted(d.items())) # sort by key
+ sorted(d, key=d.get)    # sort by value
+ 
+
+
 ```
-
-
 
