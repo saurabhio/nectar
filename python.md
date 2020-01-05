@@ -46,6 +46,12 @@ print(mem_profile.memory_usage_resource())
 
 print(any_module.__file__) # prints module location
 
+
+cProfile.run('foo()')
+
+python -m cProfile myscript.py
+
+
 # To limit module exporting, use
 __all__ = ["function1", "function3"]
 
@@ -99,10 +105,10 @@ switch_func('mul', 2, 8)
 
 if 1 in (x,y,z):
     print("ok")
-// or
+# or
 if x or y or z:
      print("ok")
-// or
+# or
 if any((x,y,z)):
     print("ok")
     
@@ -194,28 +200,47 @@ db_password = os.environ.get('DB_PASS')
 home = os.environ.get('HOME')
  
  
- d = dict(zip(['name', 'phone'], ['foo', 1234567890]))
+d = dict(zip(['name', 'phone'], ['foo', 1234567890]))
  
- dict(sorted(d.items())) # sort by key
- sorted(d, key=d.get)    # sort by value
+dict(sorted(d.items())) # sort by key
+sorted(d, key=d.get)    # sort by value
  
-
 
 def p(n):
     result = []
     for i in range(n):
         result.append(i*i)
     return result
-// better
+# better
 def p(n):
     for i in xrange(n):
         yield i*i
  
- gen_p = p()
- k = gen_p.send(None)
+gen_p = p()
+k = gen_p.send(None)
  
  
- 
-     
+s = ""
+for x list:
+    s += some_function(x)
+# better
+slist = [some_function(elt) for elt in somelist]
+s = "".join(slist)
+
+
+# for a list of tuples, to sort by the n-th field of each tuple
+def sortby(somelist, n):
+    nlist = [(x[n], x) for x in somelist]
+    nlist.sort()
+    return [val for (key, val) in nlist]
+
+# same sort in place
+def sortby_inplace(somelist, n):
+    somelist[:] = [(x[n], x) for x in somelist]
+    somelist.sort()
+    somelist[:] = [val for (key, val) in somelist]
+    return
+
+
 ```
 
