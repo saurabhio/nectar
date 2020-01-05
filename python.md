@@ -99,6 +99,12 @@ ord("c")
 chr(99)
 
 
+million = 1_000_000 
+binary = 0b_0010 
+octa = 0o_64 
+hexa = 0x_23_ab
+
+
 x = 10 if condition else 0
 
 
