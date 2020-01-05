@@ -133,4 +133,80 @@ Generalization: a-kind-of
 Specialization: is-a
 Aggregation: has-a
 
+
+I have personally seen OOP projects fail because they become too complex to maintain.
+
+OOP falls flat once the complexity of the application starts increasing.
+ Instead of reducing complexity, it encourages promiscuous sharing of mutable state and introduces additional complexity with its numerous design patterns. OOP makes common development practices, like refactoring and testing, needlessly hard.
+
+ but the truth is that modern Java/C# OOP has never been properly designed. It never came out of a proper research institution (in contrast with Haskell/FP). Lambda calculus offers a complete theoretical foundation for Functional Programming. OOP has nothing to match that.
+
+Using OOP is seemingly innocent in the short-term, especially on greenfield projects. But what are the long-term consequences of using OOP? OOP is a time bomb, set to explode sometime in the future when the codebase gets big enough.
+
+OOP is not natural for the human brain, our thought process is centered around “doing” things — go for a walk, talk to a friend, eat pizza. Our brains have evolved to do things, not to organize the world into complex hierarchies of abstract objects.
+
+
+C++ is a horrible [object-oriented] language… And limiting your project to C means that people don’t screw things up with any idiotic “object model” c&@p.
+— Linus Torvalds, the creator of Linux
+
+
+A good programming framework helps us to write reliable code. First and foremost, it should help reduce complexity by providing the following things:
+
+    Modularity and reusability
+    Proper state isolation
+    High signal-to-noise ratio
+
+Unfortunately, OOP provides developers too many tools and choices, without imposing the right kinds of limitations. Even though OOP promises to address modularity and improve reusability, it fails to deliver on its promises (more on this later). OOP code encourages the use of shared mutable state, which has been proven to be unsafe time and time again. OOP typically requires a lot of boilerplate code (low signal-to-noise ratio).
+
+
+I’m sorry that I long ago coined the term “objects” for this topic because it gets many people to focus on the lesser idea. The big idea is messaging.
+- Alan Kay, the inventor of OOP
+
+Alan Kay’s big idea was to have independent programs (cells) communicate by sending messages to each other. The state of the independent programs would never be shared with the outside world (encapsulation).
+
+That’s it. OOP was never intended to have things like inheritance, polymorphism, the “new” keyword, and the myriad of design patterns.
+
+Erlang is OOP in its purest form. Unlike more mainstream languages, it focuses on the core idea of OOP — messaging. In Erlang, objects communicate by passing immutable messages between objects.
+
+Is there proof that immutable messages are a superior approach compared to method calls?
+
+Hell yes! Erlang is probably the most reliable language in the world.
+
+The most important aspect of software development is keeping the code complexity down. Period. None of the fancy features matter if the codebase becomes impossible to maintain. 
+
+
+Limitations of the Human Brain
+
+Why is mutable state such a big problem? The human brain is the most powerful machine in the known universe. However, our brains are really bad at working with state since we can only hold about 5 items at a time in our working memory. It is much easier to reason about a piece of code if you only think about what the code does, not what variables it changes around the codebase.
+
+Programming with mutable state is an act of mental juggling️. I don’t know about you, but I could probably juggle two balls. Give me three or more balls and I will certainly drop all of them. Why are we then trying to perform this act of mental juggling every single day at work
+
+Unfortunately, the mental juggling of mutable state is at the very core of OOP . The sole purpose for the existence of methods on an object is to mutate that same object.
+
+In Functional Programming, state typically is being isolated. You always know where some state is coming from. State is never scattered across your different functions. In OOP, every object has its own state, and when building a program , you have to keep in mind the state of all of the objects that you currently are working with.
+
+Is all state evil? No, Alan Kay state is not evil! State mutation probably is fine if it is truly isolated (not the “OOP-way” isolated).
+
+It is also completely fine to have immutable data-transfer-objects. The key here is “immutable”. Such objects are then used to pass data between functions.
+
+However, such objects would also make OOP methods and properties completely redundant. What’s the use in having methods and properties on an object if it cannot be mutated?
+
+
+We’ve been told that global state is the root of all evil. It should be avoided at all costs. What we have never been told is that encapsulation, in fact, is glorified global state.
+
+To make the code more efficient, objects are passed not by their value, but by their reference. This is where “dependency injection” falls flat.
+
+
+Some people say that OOP tries to model the real world. This is simply not true — OOP has nothing to relate to in the real world. 
+
+Objects in the real world interact with each other using messages, but they mostly are independent of each other.
+
+
+Objects (or nouns) are at the very core of OOP. A fundamental limitation of OOP is that it forces everything into nouns. And not everything should be modeled as nouns. Operations (functions) should not be modeled as objects. 
+
+Unfortunately, the design patterns are nothing other than band-aids. They exist solely to address the shortcomings of OOP.
+
+
+
+
 ```
