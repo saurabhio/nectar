@@ -7,6 +7,19 @@ sudo apt install python3.8
 
 # list all versions installed
 ls -l /usr/bin/python*
+
+
+sudo apt-get install python3-pip 
+pip3 install virtualenv
+
+python3 -m virtualenv ~/env_test  # to create virtual environment, (by default it has setuptools, pip, and wheel)
+source ~/env_test/bin/activate    # to use 'env_test' environment
+deactivate			  # to exit any environment
+In the environment, pip and pip3, python and python3 can be used interchangeably.
+
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
 ```
 
 ```
@@ -38,6 +51,23 @@ def myfunc(a, b):
 
 funcs = [myfunc]
 funcs[0](2, 3)
+
+
+When calling a function, sequence of params:
+  - Mandatory params
+  - Arbitrary Un-named params
+  - Arbitrary named params or Defined named params
+  
+Arbitrary Un-named params are unpacked in *args
+Arbitrary named params are unpacked in **kwargs
+ 
+def add(*args): # for taking any number of arguments
+   print(args)  # prints a tuple of arguments
+ 
+def add(a, b, *args, c=10, **kwargs):
+  print(args)   # tuple
+  print(kwargs) # dictionary of named arguments
+  
 ```
 
 
@@ -60,6 +90,13 @@ print(f"{right:>10} | {left:<10} | {center:^10} | {12.34567":{width}.{precision}
 
 large_number = 10_000_000
 print(f'{large_number:,}')
+
+
+int("a",16)
+int("0xa",16)
+bin(42)
+ord("c")
+chr(99)
 
 
 x = 10 if condition else 0
