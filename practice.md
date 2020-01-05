@@ -56,33 +56,34 @@ Note: Most of the following notes are taken from the various sources on the inte
  - All services, without exception, must be designed keeping in mind that exposing these to developers outside.
     
 
-- API is about what is going to be done, not about how
-- Naming of API must convey "what" and only do that. (no side-effects)
-- Specific error message should be returned
-
-- Names should reveal intent
-- Functions should do one thing (single responsibility principle)
-- Proper Abstraction, neither too high nor too low
-- Not too much comments
-- Functions should not use global variables, and not write to disk or console. This should be handled by some other special functions
-- Avoid writing functions that take more than three (2^3 is 8 cases) input arguments
-- API is a developer UI, ensure UX is pleasant
-- Keep only two baseurls per resource
-- Keep verbs out of baseurls, (as HTTP verbs do that). Use noun for resources
+- Rest API
   ```
+  API is about what is going to be done, not about how
+  Naming of API must convey "what" and only do that. (no side-effects)
+  Specific error message should be returned
+  API is a developer UI, ensure UX is pleasant
+  Keep only two baseurls per resource
+  Keep verbs out of baseurls, (as HTTP verbs do that). Use noun for resources
   GET /tickets
   GET /tickets/123
+  Use plural url formats, e.g. tickets (not ticket)      
+  Always use SSL
+  Good documentation (should be publicly easily available)
+  Always version APIs
+  Create aliases for common queries
+  API should have ability to take json as input
+  Limit which fields are returned by API
+  RESTful APIs should be stateless. And the authentication should not depend on cookies or sessions.
   ```
- - Use plural url formats, e.g. tickets (not ticket)      
- - Always use SSL
- - Good documentation (should be publicly easily available)
- - Always version APIs
- - Create aliases for common queries
- - API should have ability to take json as input
- - Limit which fields are returned by API
- - RESTful APIs should be stateless. And the authentication should not depend on cookies or sessions.
- 
-
+- Functions
+  ```
+  Names should reveal intent
+  Functions should do one thing (single responsibility principle)
+  Proper Abstraction, neither too high nor too low
+  Not too much comments
+  Functions should not use global variables, and not write to disk or console. This should be handled by some other special functions
+  Avoid writing functions that take more than three (2^3 is 8 cases) input arguments
+    ```
 
 - Continuous Integration
   ```
@@ -108,68 +109,58 @@ Note: Most of the following notes are taken from the various sources on the inte
   time to become snowballs.
   
   Key points for a good CI build:
-  It’s very simple. Keep it short. 3-7 minutes should be max. It’s not about CPU and resources. It is about developers’ productivity. The first rule of productivity is focus. Do one thing, finish it, then move to the next thing.
+  It’s very simple. Keep it short. 3-7 minutes should be max. It’s not about CPU and resources. It is about developers productivity. The first rule of productivity is focus. Do one thing, finish it, then move to the next thing.
+  
+  Context switching is costly. Keep the context switching to its minimum.
+  Keeping your CI build short makes it a trade off. Tests that run longer or provide little value in the context of CI should be moved to the CD step.
+  ```
+  
+- Continuous Delivery
+  ```
+  Continuous Delivery and Deployment are engineering problems.
+  Continuous Delivery is about being able to deploy any version of your code at all times. In practice it means the last or 
+  pre last version of your code. You don’t deploy automatically, usually because you don’t have to or are limited by your 
+  project lifecycle. But as soon as someone feels like it, deploy can be done in minimum time. That someone can be the 
+  test/QA team that wants to test things out on a staging or preproduction environment. Or it can actually be time to roll 
+  out the code to production.
+  
+  The idea of Continuous Delivery is to prepare artefacts as close as possible from what you want to run in your environment. 
+  By preparing artefacts I don’t mean turning code into artefacts. This is usually a few scripts and minutes of execution. 
+  Preparing means: 
+  Run all the tests you can to ensure that once deployed the code will actually work. Run unit tests, integration tests, end 
+  to end tests and even performance tests if you can automate that.
+  
+  Continuous Deployment is the next step. You deploy the most up to date and production ready version of your code to some 
+  environment. Ideally production if you trust your CD test suite enough.
+  
+  Continuous Delivery and Continuous Deployment (let’s call them CD from now on) are not team problems. They are about 
+  finding the right balance between execution time, maintenance efforts and relevance of your tests suite to be able to say  
+  "This version works as it should". And it is a balance. 
+  
+  If you spend so much time keeping your tests up to date with latest code that it impedes the team progress, that is not 
+  good either. And if your test suite ensures pretty much nothing … it is basically useless.
+  
+  In an ideal world we want 1 set of deployable artefacts per commit to the main branch. You can see we have a vertical 
+  scalability problem: the faster we move from code to artefacts, the more ready we are to deploy the newest version of the 
+  code.
+  
+  Continuous Integration is an horizontal scalability problem. You want developers to merge their code often so the checks 
+  must be fast. Ideally within minutes to avoid developers switching context all the time with highly async feedback from the 
+  CI builds.
 
-Context switching is costly. Keep the context switching to its minimum.
-
-Keeping your CI build short makes it a trade off. Tests that run longer or provide little value in the context of CI should be moved to the CD step
-
-
-
-Continuous Delivery and Deployment are engineering problems
-
-Continuous Delivery is about being able to deploy any version of your code at all times. In practice it means the last or pre last version of your code. You don’t deploy automatically, usually because you don’t have to or are limited by your project lifecycle. But as soon as someone feels like it, deploy can be done in minimum time. That someone can be the test/QA team that wants to test things out on a staging or preproduction environment. Or it can actually be time to roll out the code to production.
-
-The idea of Continuous Delivery is to prepare artefacts as close as possible from what you want to run in your environment. 
-
-By preparing artefacts I don’t mean turning code into artefacts. This is usually a few scripts and minutes of execution. Preparing means:
-Run all the tests you can to ensure that once deployed the code will actually work. Run unit tests, integration tests, end to end tests and even performance tests if you can automate that.
-
-
-Continuous Deployment is the next step. You deploy the most up to date and production ready version of your code to some environment. Ideally production if you trust your CD test suite enough.
-
-
-Continuous Delivery and Continuous Deployment (let’s call them CD from now on) are not team problems. They are about finding the right balance between execution time, maintenance efforts and relevance of your tests suite to be able to say “This version works as it should”. And it is a balance. 
-
-If you spend so much time keeping your tests up to date with latest code that it impedes the team progress, that is not good either. And if your test suite ensures pretty much nothing … it is basically useless.
-
-
-
-In an ideal world we want 1 set of deployable artefacts per commit to the main branch. You can see we have a vertical scalability problem: the faster we move from code to artefacts, the more ready we are to deploy the newest version of the code.
-
-
-Continuous Integration is an horizontal scalability problem. You want developers to merge their code often so the checks must be fast. Ideally within minutes to avoid developers switching context all the time with highly async feedback from the CI builds.
-
-
-
-
-
-    A good CI build:
-
-        Ensures no code that breaks basic stuff and prevents other team members to work is introduced to the main branch
-        Is fast enough to provide feedback to developers within minutes to prevent context switching between tasks
-
-
-
-
-Continuous Delivery and Deployment are vertical scalability problems. You have one rather complex operation to perform.
-
-    A good CD build:
-
-        Ensures that as many features as possible are working properly
-        The faster the better, but it is not a matter of speed. A 30-60 minutes build is OK
-
-
-
-Continuous Integration is a trade off between speed of feedback loop to developers and relevance of the checks your perform (build and test). No code that would impede the team progress should make it to the main branch.
-
-Continuous Delivery of Deployment is about running as thorough checks as you can to catch issues on your code. Completeness of the checks is the most important factor.
-
-
-
-
-
-
-
-
-
+  A good CI build:
+  Ensures no code that breaks basic stuff and prevents other team members to work is introduced to the main branch
+  Is fast enough to provide feedback to developers within minutes to prevent context switching between tasks
+  
+  Continuous Delivery and Deployment are vertical scalability problems. You have one rather complex operation to perform.
+  A good CD build:
+  Ensures that as many features as possible are working properly
+  The faster the better, but it is not a matter of speed. A 30-60 minutes build is OK
+  
+  Continuous Integration is a trade off between speed of feedback loop to developers and relevance of the checks your perform 
+  (build and test). No code that would impede the team progress should make it to the main branch. 
+  
+  Continuous Delivery of Deployment is about running as thorough checks as you can to catch issues on your code. Completeness 
+  of the checks is the most important factor.
+  ```
+- 
