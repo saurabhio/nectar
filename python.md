@@ -201,6 +201,21 @@ home = os.environ.get('HOME')
  
 
 
-
+def p(n):
+    result = []
+    for i in range(n):
+        result.append(i*i)
+    return result
+// better
+def p(n):
+    for i in xrange(n):
+        yield i*i
+ 
+ gen_p = p()
+ k = gen_p.send(None)
+ 
+ 
+ 
+     
 ```
 
